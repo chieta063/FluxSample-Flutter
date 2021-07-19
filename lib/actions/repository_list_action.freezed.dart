@@ -16,8 +16,18 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$RepositoryListActionTearOff {
   const _$RepositoryListActionTearOff();
 
-  Fetch fetch(List<Repository> repositories) {
-    return Fetch(
+  Loading loading() {
+    return Loading();
+  }
+
+  Error error(Exception error) {
+    return Error(
+      error,
+    );
+  }
+
+  SearchResult searchResult(List<Repository> repositories) {
+    return SearchResult(
       repositories,
     );
   }
@@ -28,33 +38,35 @@ const $RepositoryListAction = _$RepositoryListActionTearOff();
 
 /// @nodoc
 mixin _$RepositoryListAction {
-  List<Repository> get repositories => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Repository> repositories) fetch,
+    required TResult Function() loading,
+    required TResult Function(Exception error) error,
+    required TResult Function(List<Repository> repositories) searchResult,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Repository> repositories)? fetch,
+    TResult Function()? loading,
+    TResult Function(Exception error)? error,
+    TResult Function(List<Repository> repositories)? searchResult,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Fetch value) fetch,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(SearchResult value) searchResult,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Fetch value)? fetch,
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(SearchResult value)? searchResult,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $RepositoryListActionCopyWith<RepositoryListAction> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -63,7 +75,6 @@ abstract class $RepositoryListActionCopyWith<$Res> {
   factory $RepositoryListActionCopyWith(RepositoryListAction value,
           $Res Function(RepositoryListAction) then) =
       _$RepositoryListActionCopyWithImpl<$Res>;
-  $Res call({List<Repository> repositories});
 }
 
 /// @nodoc
@@ -74,43 +85,251 @@ class _$RepositoryListActionCopyWithImpl<$Res>
   final RepositoryListAction _value;
   // ignore: unused_field
   final $Res Function(RepositoryListAction) _then;
+}
+
+/// @nodoc
+abstract class $LoadingCopyWith<$Res> {
+  factory $LoadingCopyWith(Loading value, $Res Function(Loading) then) =
+      _$LoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$LoadingCopyWithImpl<$Res>
+    extends _$RepositoryListActionCopyWithImpl<$Res>
+    implements $LoadingCopyWith<$Res> {
+  _$LoadingCopyWithImpl(Loading _value, $Res Function(Loading) _then)
+      : super(_value, (v) => _then(v as Loading));
+
+  @override
+  Loading get _value => super._value as Loading;
+}
+
+/// @nodoc
+
+class _$Loading with DiagnosticableTreeMixin implements Loading {
+  _$Loading();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RepositoryListAction.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RepositoryListAction.loading'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is Loading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(Exception error) error,
+    required TResult Function(List<Repository> repositories) searchResult,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(Exception error)? error,
+    TResult Function(List<Repository> repositories)? searchResult,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(SearchResult value) searchResult,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(SearchResult value)? searchResult,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Loading implements RepositoryListAction {
+  factory Loading() = _$Loading;
+}
+
+/// @nodoc
+abstract class $ErrorCopyWith<$Res> {
+  factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
+      _$ErrorCopyWithImpl<$Res>;
+  $Res call({Exception error});
+}
+
+/// @nodoc
+class _$ErrorCopyWithImpl<$Res> extends _$RepositoryListActionCopyWithImpl<$Res>
+    implements $ErrorCopyWith<$Res> {
+  _$ErrorCopyWithImpl(Error _value, $Res Function(Error) _then)
+      : super(_value, (v) => _then(v as Error));
+
+  @override
+  Error get _value => super._value as Error;
 
   @override
   $Res call({
-    Object? repositories = freezed,
+    Object? error = freezed,
   }) {
-    return _then(_value.copyWith(
-      repositories: repositories == freezed
-          ? _value.repositories
-          : repositories // ignore: cast_nullable_to_non_nullable
-              as List<Repository>,
+    return _then(Error(
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as Exception,
     ));
   }
 }
 
 /// @nodoc
-abstract class $FetchCopyWith<$Res>
-    implements $RepositoryListActionCopyWith<$Res> {
-  factory $FetchCopyWith(Fetch value, $Res Function(Fetch) then) =
-      _$FetchCopyWithImpl<$Res>;
+
+class _$Error with DiagnosticableTreeMixin implements Error {
+  _$Error(this.error);
+
   @override
+  final Exception error;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RepositoryListAction.error(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RepositoryListAction.error'))
+      ..add(DiagnosticsProperty('error', error));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Error &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+
+  @JsonKey(ignore: true)
+  @override
+  $ErrorCopyWith<Error> get copyWith =>
+      _$ErrorCopyWithImpl<Error>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(Exception error) error,
+    required TResult Function(List<Repository> repositories) searchResult,
+  }) {
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(Exception error)? error,
+    TResult Function(List<Repository> repositories)? searchResult,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(SearchResult value) searchResult,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(SearchResult value)? searchResult,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Error implements RepositoryListAction {
+  factory Error(Exception error) = _$Error;
+
+  Exception get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ErrorCopyWith<Error> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SearchResultCopyWith<$Res> {
+  factory $SearchResultCopyWith(
+          SearchResult value, $Res Function(SearchResult) then) =
+      _$SearchResultCopyWithImpl<$Res>;
   $Res call({List<Repository> repositories});
 }
 
 /// @nodoc
-class _$FetchCopyWithImpl<$Res> extends _$RepositoryListActionCopyWithImpl<$Res>
-    implements $FetchCopyWith<$Res> {
-  _$FetchCopyWithImpl(Fetch _value, $Res Function(Fetch) _then)
-      : super(_value, (v) => _then(v as Fetch));
+class _$SearchResultCopyWithImpl<$Res>
+    extends _$RepositoryListActionCopyWithImpl<$Res>
+    implements $SearchResultCopyWith<$Res> {
+  _$SearchResultCopyWithImpl(
+      SearchResult _value, $Res Function(SearchResult) _then)
+      : super(_value, (v) => _then(v as SearchResult));
 
   @override
-  Fetch get _value => super._value as Fetch;
+  SearchResult get _value => super._value as SearchResult;
 
   @override
   $Res call({
     Object? repositories = freezed,
   }) {
-    return _then(Fetch(
+    return _then(SearchResult(
       repositories == freezed
           ? _value.repositories
           : repositories // ignore: cast_nullable_to_non_nullable
@@ -121,29 +340,29 @@ class _$FetchCopyWithImpl<$Res> extends _$RepositoryListActionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Fetch with DiagnosticableTreeMixin implements Fetch {
-  _$Fetch(this.repositories);
+class _$SearchResult with DiagnosticableTreeMixin implements SearchResult {
+  _$SearchResult(this.repositories);
 
   @override
   final List<Repository> repositories;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RepositoryListAction.fetch(repositories: $repositories)';
+    return 'RepositoryListAction.searchResult(repositories: $repositories)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'RepositoryListAction.fetch'))
+      ..add(DiagnosticsProperty('type', 'RepositoryListAction.searchResult'))
       ..add(DiagnosticsProperty('repositories', repositories));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Fetch &&
+        (other is SearchResult &&
             (identical(other.repositories, repositories) ||
                 const DeepCollectionEquality()
                     .equals(other.repositories, repositories)));
@@ -155,25 +374,29 @@ class _$Fetch with DiagnosticableTreeMixin implements Fetch {
 
   @JsonKey(ignore: true)
   @override
-  $FetchCopyWith<Fetch> get copyWith =>
-      _$FetchCopyWithImpl<Fetch>(this, _$identity);
+  $SearchResultCopyWith<SearchResult> get copyWith =>
+      _$SearchResultCopyWithImpl<SearchResult>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Repository> repositories) fetch,
+    required TResult Function() loading,
+    required TResult Function(Exception error) error,
+    required TResult Function(List<Repository> repositories) searchResult,
   }) {
-    return fetch(repositories);
+    return searchResult(repositories);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Repository> repositories)? fetch,
+    TResult Function()? loading,
+    TResult Function(Exception error)? error,
+    TResult Function(List<Repository> repositories)? searchResult,
     required TResult orElse(),
   }) {
-    if (fetch != null) {
-      return fetch(repositories);
+    if (searchResult != null) {
+      return searchResult(repositories);
     }
     return orElse();
   }
@@ -181,30 +404,33 @@ class _$Fetch with DiagnosticableTreeMixin implements Fetch {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Fetch value) fetch,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(SearchResult value) searchResult,
   }) {
-    return fetch(this);
+    return searchResult(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Fetch value)? fetch,
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(SearchResult value)? searchResult,
     required TResult orElse(),
   }) {
-    if (fetch != null) {
-      return fetch(this);
+    if (searchResult != null) {
+      return searchResult(this);
     }
     return orElse();
   }
 }
 
-abstract class Fetch implements RepositoryListAction {
-  factory Fetch(List<Repository> repositories) = _$Fetch;
+abstract class SearchResult implements RepositoryListAction {
+  factory SearchResult(List<Repository> repositories) = _$SearchResult;
 
-  @override
   List<Repository> get repositories => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
-  $FetchCopyWith<Fetch> get copyWith => throw _privateConstructorUsedError;
+  $SearchResultCopyWith<SearchResult> get copyWith =>
+      throw _privateConstructorUsedError;
 }

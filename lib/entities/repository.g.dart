@@ -8,7 +8,7 @@ part of 'repository.dart';
 
 _$_Repository _$_$_RepositoryFromJson(Map<String, dynamic> json) {
   return _$_Repository(
-    id: json['id'] as String? ?? '',
+    id: json['id'] as int? ?? 0,
     name: json['name'] as String? ?? '',
   );
 }

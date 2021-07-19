@@ -7,7 +7,7 @@ part 'repository.g.dart';
 @freezed
 class Repository with _$Repository {
   factory Repository({
-    @Default("") String id,
+    @Default(0) int id,
     @Default("") String name,
   }) = _Repository;
   factory Repository.fromJson(Map<String, dynamic> json) => _$RepositoryFromJson(json);

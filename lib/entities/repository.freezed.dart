@@ -20,7 +20,7 @@ Repository _$RepositoryFromJson(Map<String, dynamic> json) {
 class _$RepositoryTearOff {
   const _$RepositoryTearOff();
 
-  _Repository call({String id = "", String name = ""}) {
+  _Repository call({int id = 0, String name = ""}) {
     return _Repository(
       id: id,
       name: name,
@@ -37,7 +37,7 @@ const $Repository = _$RepositoryTearOff();
 
 /// @nodoc
 mixin _$Repository {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,7 +51,7 @@ abstract class $RepositoryCopyWith<$Res> {
   factory $RepositoryCopyWith(
           Repository value, $Res Function(Repository) then) =
       _$RepositoryCopyWithImpl<$Res>;
-  $Res call({String id, String name});
+  $Res call({int id, String name});
 }
 
 /// @nodoc
@@ -71,7 +71,7 @@ class _$RepositoryCopyWithImpl<$Res> implements $RepositoryCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -86,7 +86,7 @@ abstract class _$RepositoryCopyWith<$Res> implements $RepositoryCopyWith<$Res> {
           _Repository value, $Res Function(_Repository) then) =
       __$RepositoryCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String name});
+  $Res call({int id, String name});
 }
 
 /// @nodoc
@@ -108,7 +108,7 @@ class __$RepositoryCopyWithImpl<$Res> extends _$RepositoryCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -120,14 +120,14 @@ class __$RepositoryCopyWithImpl<$Res> extends _$RepositoryCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Repository with DiagnosticableTreeMixin implements _Repository {
-  _$_Repository({this.id = "", this.name = ""});
+  _$_Repository({this.id = 0, this.name = ""});
 
   factory _$_Repository.fromJson(Map<String, dynamic> json) =>
       _$_$_RepositoryFromJson(json);
 
-  @JsonKey(defaultValue: "")
+  @JsonKey(defaultValue: 0)
   @override
-  final String id;
+  final int id;
   @JsonKey(defaultValue: "")
   @override
   final String name;
@@ -174,13 +174,13 @@ class _$_Repository with DiagnosticableTreeMixin implements _Repository {
 }
 
 abstract class _Repository implements Repository {
-  factory _Repository({String id, String name}) = _$_Repository;
+  factory _Repository({int id, String name}) = _$_Repository;
 
   factory _Repository.fromJson(Map<String, dynamic> json) =
       _$_Repository.fromJson;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
   @override

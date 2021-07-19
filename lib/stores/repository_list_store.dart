@@ -1,13 +1,27 @@
-import 'dart:math';
-
+import 'package:flux_sample/actions/repository_list_action.dart';
 import 'package:flux_sample/dispatchers/repository_list_dispatcher.dart';
 import 'package:flux_sample/entities/repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class RepositoryListStore extends StateNotifier<List<Repository>> {
-  RepositoryListStore(RepositoryListDispatcher _dispatcher) : super([]) {
+final repositoryListStore = StateNotifierProvider.autoDispose<RepositoryListStore, AsyncValue<List<Repository>>>(
+  (ref) => RepositoryListStore(
+    ref.watch(repositoryListDispatcher),
+  ),
+);
+
+class RepositoryListStore extends StateNotifier<AsyncValue<List<Repository>>> {
+  RepositoryListStore(RepositoryListDispatcher _dispatcher) : super(AsyncValue.data([])) {
     _dispatcher.register((action) {
-      print(action.runtimeType);
+      if (action is Loading) {
+        state = AsyncValue.loading();
+      }
+      if (action is SearchResult) {
+        state = AsyncValue.data(action.repositories);
+        return;
+      }
+      if (action is Error) {
+        state = AsyncValue.error(action.error);
+      }
     });
   }
 }
