@@ -18,7 +18,11 @@ class RepositoryListActionCreator {
 
   void searchRepository(String word) async {
     _dispatcher.dispatch(RepositoryListAction.loading());
-    final repositories = await _repoUsecase.search(word);
-    _dispatcher.dispatch(RepositoryListAction.searchResult(repositories));
+    try {
+      final repositories = await _repoUsecase.search(word);
+      _dispatcher.dispatch(RepositoryListAction.searchResult(repositories));
+    } catch (error) {
+      _dispatcher.dispatch(RepositoryListAction.error());
+    }
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flux_sample/actions/repository_list_action_creator.dart';
 import 'package:flux_sample/stores/repository_list_store.dart';
+import 'package:flux_sample/views/error_view.dart';
 import 'package:flux_sample/views/progress.dart';
 import 'package:flux_sample/views/repository_list.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -13,6 +14,7 @@ class HomePage extends HookWidget {
     final store = useProvider(repositoryListStore);
     final textFieldFocusNode = useFocusNode();
     final textEditingController = useTextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         title: _buildSearchField(
@@ -31,7 +33,7 @@ class HomePage extends HookWidget {
           child: RepositoryList(),
         ),
         loading: () => Progress(),
-        error: (e, s) => Text(""),
+        error: (_, s) => ErrorView(),
       ),
     );
   }

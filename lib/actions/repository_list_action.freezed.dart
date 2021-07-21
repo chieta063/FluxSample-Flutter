@@ -20,10 +20,8 @@ class _$RepositoryListActionTearOff {
     return Loading();
   }
 
-  Error error(Exception error) {
-    return Error(
-      error,
-    );
+  Error error() {
+    return Error();
   }
 
   SearchResult searchResult(List<Repository> repositories) {
@@ -41,14 +39,14 @@ mixin _$RepositoryListAction {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(Exception error) error,
+    required TResult Function() error,
     required TResult Function(List<Repository> repositories) searchResult,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Exception error)? error,
+    TResult Function()? error,
     TResult Function(List<Repository> repositories)? searchResult,
     required TResult orElse(),
   }) =>
@@ -133,7 +131,7 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(Exception error) error,
+    required TResult Function() error,
     required TResult Function(List<Repository> repositories) searchResult,
   }) {
     return loading();
@@ -143,7 +141,7 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Exception error)? error,
+    TResult Function()? error,
     TResult Function(List<Repository> repositories)? searchResult,
     required TResult orElse(),
   }) {
@@ -186,7 +184,6 @@ abstract class Loading implements RepositoryListAction {
 abstract class $ErrorCopyWith<$Res> {
   factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
       _$ErrorCopyWithImpl<$Res>;
-  $Res call({Exception error});
 }
 
 /// @nodoc
@@ -197,78 +194,52 @@ class _$ErrorCopyWithImpl<$Res> extends _$RepositoryListActionCopyWithImpl<$Res>
 
   @override
   Error get _value => super._value as Error;
-
-  @override
-  $Res call({
-    Object? error = freezed,
-  }) {
-    return _then(Error(
-      error == freezed
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as Exception,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$Error with DiagnosticableTreeMixin implements Error {
-  _$Error(this.error);
-
-  @override
-  final Exception error;
+  _$Error();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RepositoryListAction.error(error: $error)';
+    return 'RepositoryListAction.error()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'RepositoryListAction.error'))
-      ..add(DiagnosticsProperty('error', error));
+    properties..add(DiagnosticsProperty('type', 'RepositoryListAction.error'));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is Error &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+    return identical(this, other) || (other is Error);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
-
-  @JsonKey(ignore: true)
-  @override
-  $ErrorCopyWith<Error> get copyWith =>
-      _$ErrorCopyWithImpl<Error>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(Exception error) error,
+    required TResult Function() error,
     required TResult Function(List<Repository> repositories) searchResult,
   }) {
-    return error(this.error);
+    return error();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Exception error)? error,
+    TResult Function()? error,
     TResult Function(List<Repository> repositories)? searchResult,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(this.error);
+      return error();
     }
     return orElse();
   }
@@ -299,11 +270,7 @@ class _$Error with DiagnosticableTreeMixin implements Error {
 }
 
 abstract class Error implements RepositoryListAction {
-  factory Error(Exception error) = _$Error;
-
-  Exception get error => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ErrorCopyWith<Error> get copyWith => throw _privateConstructorUsedError;
+  factory Error() = _$Error;
 }
 
 /// @nodoc
@@ -381,7 +348,7 @@ class _$SearchResult with DiagnosticableTreeMixin implements SearchResult {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(Exception error) error,
+    required TResult Function() error,
     required TResult Function(List<Repository> repositories) searchResult,
   }) {
     return searchResult(repositories);
@@ -391,7 +358,7 @@ class _$SearchResult with DiagnosticableTreeMixin implements SearchResult {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Exception error)? error,
+    TResult Function()? error,
     TResult Function(List<Repository> repositories)? searchResult,
     required TResult orElse(),
   }) {

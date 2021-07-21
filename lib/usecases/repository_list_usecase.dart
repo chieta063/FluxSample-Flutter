@@ -12,7 +12,6 @@ final repositoryListUsecase = Provider(
 
 class RepositoryListUsecase {
   RepositoryListUsecase(this._dio);
-
   Dio _dio;
 
   Future<List<Repository>> search(String word) async {

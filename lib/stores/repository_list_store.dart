@@ -20,7 +20,7 @@ class RepositoryListStore extends StateNotifier<AsyncValue<List<Repository>>> {
         return;
       }
       if (action is Error) {
-        state = AsyncValue.error(action.error);
+        state = AsyncValue.error(Exception());
       }
     });
   }
