@@ -14,6 +14,7 @@ class RepositoryListStore extends StateNotifier<AsyncValue<List<Repository>>> {
     _dispatcher.register((action) {
       if (action is Loading) {
         state = AsyncValue.loading();
+        return;
       }
       if (action is SearchResult) {
         state = AsyncValue.data(action.repositories);
@@ -21,6 +22,7 @@ class RepositoryListStore extends StateNotifier<AsyncValue<List<Repository>>> {
       }
       if (action is Error) {
         state = AsyncValue.error(Exception());
+        return;
       }
     });
   }
